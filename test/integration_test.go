@@ -4730,6 +4730,7 @@ func TestRenderJsonWithMockOutputs(t *testing.T) {
 			"metadata": expectedMetadata,
 			"value": map[string]interface{}{
 				"config_path": "../dependency",
+				"enabled":     nil,
 				"mock_outputs": map[string]interface{}{
 					"bastion_host_security_group_id": "123",
 					"security_group_id":              "sg-abcd1234",
@@ -4861,7 +4862,7 @@ func TestRenderJsonMetadataIncludes(t *testing.T) {
 	assert.Equal(t, string(serializedExpectedRemoteState), string(serializedRemoteState))
 }
 
-func TestRenderJsonMetadataDepenency(t *testing.T) {
+func TestRenderJsonMetadataDependency(t *testing.T) {
 	t.Parallel()
 
 	tmpEnvPath := copyEnvironment(t, TEST_FIXTURE_RENDER_JSON_METADATA)
@@ -4900,12 +4901,14 @@ func TestRenderJsonMetadataDepenency(t *testing.T) {
 				"name":                                    "dep",
 				"outputs":                                 nil,
 				"skip":                                    nil,
+				"enabled":                                 nil,
 			},
 		},
 		"dep2": map[string]interface{}{
 			"metadata": terragruntMetadata,
 			"value": map[string]interface{}{
 				"config_path": "../dependency2",
+				"enabled":     nil,
 				"mock_outputs": map[string]interface{}{
 					"test2": "value2",
 				},
