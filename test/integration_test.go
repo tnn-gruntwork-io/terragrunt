@@ -28,23 +28,23 @@ import (
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/sts"
-	terraws "github.com/gruntwork-io/terratest/modules/aws"
-	"github.com/gruntwork-io/terratest/modules/git"
+	terraws "github.com/tnn-gruntwork-io/terratest/modules/aws"
+	"github.com/tnn-gruntwork-io/terratest/modules/git"
 	"github.com/hashicorp/go-multierror"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/api/iterator"
 
-	"github.com/gruntwork-io/terragrunt/aws_helper"
-	"github.com/gruntwork-io/terragrunt/cli"
-	"github.com/gruntwork-io/terragrunt/codegen"
-	"github.com/gruntwork-io/terragrunt/config"
-	terragruntDynamoDb "github.com/gruntwork-io/terragrunt/dynamodb"
-	"github.com/gruntwork-io/terragrunt/errors"
-	"github.com/gruntwork-io/terragrunt/options"
-	"github.com/gruntwork-io/terragrunt/remote"
-	"github.com/gruntwork-io/terragrunt/shell"
-	"github.com/gruntwork-io/terragrunt/util"
+	"github.com/tnn-gruntwork-io/terragrunt/aws_helper"
+	"github.com/tnn-gruntwork-io/terragrunt/cli"
+	"github.com/tnn-gruntwork-io/terragrunt/codegen"
+	"github.com/tnn-gruntwork-io/terragrunt/config"
+	terragruntDynamoDb "github.com/tnn-gruntwork-io/terragrunt/dynamodb"
+	"github.com/tnn-gruntwork-io/terragrunt/errors"
+	"github.com/tnn-gruntwork-io/terragrunt/options"
+	"github.com/tnn-gruntwork-io/terragrunt/remote"
+	"github.com/tnn-gruntwork-io/terragrunt/shell"
+	"github.com/tnn-gruntwork-io/terragrunt/util"
 )
 
 // hard-code this to match the test fixture for now
@@ -1226,7 +1226,7 @@ func TestAwsProviderPatch(t *testing.T) {
 	require.NoError(t, err)
 	branchName := git.GetCurrentBranchName(t)
 	// https://www.terraform.io/docs/language/modules/sources.html#modules-in-package-sub-directories
-	// https://github.com/gruntwork-io/terragrunt/issues/1778
+	// https://github.com/tnn-gruntwork-io/terragrunt/issues/1778
 	branchName = url.QueryEscape(branchName)
 	mainContents = strings.Replace(mainContents, "__BRANCH_NAME__", branchName, -1)
 	require.NoError(t, ioutil.WriteFile(mainTFFile, []byte(mainContents), 0444))
@@ -1834,7 +1834,7 @@ func TestTerragruntInfo(t *testing.T) {
 	assert.Equal(t, dat.IamRole, "")
 }
 
-// Test case for yamldecode bug: https://github.com/gruntwork-io/terragrunt/issues/834
+// Test case for yamldecode bug: https://github.com/tnn-gruntwork-io/terragrunt/issues/834
 func TestYamlDecodeRegressions(t *testing.T) {
 	t.Parallel()
 
@@ -2625,7 +2625,7 @@ func TestDependencyOutputTypeConversion(t *testing.T) {
 	assert.Equal(t, outputs["from_env"].Value, "default")
 }
 
-// Regression testing for https://github.com/gruntwork-io/terragrunt/issues/1102: Ordering keys from
+// Regression testing for https://github.com/tnn-gruntwork-io/terragrunt/issues/1102: Ordering keys from
 // maps to avoid random placements when terraform file is generated.
 func TestOrderedMapOutputRegressions1102(t *testing.T) {
 	t.Parallel()
@@ -2699,7 +2699,7 @@ func TestDependencyOutputCycleHandling(t *testing.T) {
 	}
 }
 
-// Regression testing for https://github.com/gruntwork-io/terragrunt/issues/854: Referencing a dependency that is a
+// Regression testing for https://github.com/tnn-gruntwork-io/terragrunt/issues/854: Referencing a dependency that is a
 // subdirectory of the current config, which includes an `include` block has problems resolving the correct relative
 // path.
 func TestDependencyOutputRegression854(t *testing.T) {
@@ -2722,7 +2722,7 @@ func TestDependencyOutputRegression854(t *testing.T) {
 	require.NoError(t, err)
 }
 
-// Regression testing for https://github.com/gruntwork-io/terragrunt/issues/906
+// Regression testing for https://github.com/tnn-gruntwork-io/terragrunt/issues/906
 func TestDependencyOutputSameOutputConcurrencyRegression(t *testing.T) {
 	t.Parallel()
 
@@ -4617,7 +4617,7 @@ func TestNoMultipleInitsWithoutSourceChange(t *testing.T) {
 	err = runTerragruntCommand(t, fmt.Sprintf("terragrunt plan --terragrunt-non-interactive --terragrunt-working-dir %s", testPath), &stdout, &stderr)
 	require.NoError(t, err)
 	// no initialization expected for second plan run
-	// https://github.com/gruntwork-io/terragrunt/issues/1921
+	// https://github.com/tnn-gruntwork-io/terragrunt/issues/1921
 	errout = string(stderr.Bytes())
 	assert.Equal(t, 0, strings.Count(errout, "Terraform has been successfully initialized!"))
 }

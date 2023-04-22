@@ -1,8 +1,8 @@
 package configstack
 
 import (
-	"github.com/gruntwork-io/terragrunt/errors"
-	"github.com/gruntwork-io/terragrunt/util"
+	"github.com/tnn-gruntwork-io/terragrunt/errors"
+	"github.com/tnn-gruntwork-io/terragrunt/util"
 )
 
 // Check for dependency cycles in the given list of modules and return an error if one is found

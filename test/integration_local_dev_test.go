@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/gruntwork-io/terragrunt/util"
+	"github.com/tnn-gruntwork-io/terragrunt/util"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -21,8 +21,8 @@ func TestTerragruntSourceMap(t *testing.T) {
 	rootPath := filepath.Join(tmpEnvPath, fixtureSourceMapPath)
 	sourceMapArgs := fmt.Sprintf(
 		"--terragrunt-source-map %s --terragrunt-source-map %s",
-		fmt.Sprintf("git::ssh://git@github.com/gruntwork-io/i-dont-exist.git=%s", tmpEnvPath),
-		fmt.Sprintf("git::ssh://git@github.com/gruntwork-io/another-dont-exist.git=%s", tmpEnvPath),
+		fmt.Sprintf("git::ssh://git@github.com/tnn-gruntwork-io/i-dont-exist.git=%s", tmpEnvPath),
+		fmt.Sprintf("git::ssh://git@github.com/tnn-gruntwork-io/another-dont-exist.git=%s", tmpEnvPath),
 	)
 
 	testCases := []struct {

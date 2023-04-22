@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/gruntwork-io/terragrunt/options"
+	"github.com/tnn-gruntwork-io/terragrunt/options"
 )
 
 func spinUpDeprecationHandler(origOptions *options.TerragruntOptions) (*options.TerragruntOptions, string, string) {
