@@ -8,11 +8,11 @@ import (
 
 	"github.com/sirupsen/logrus"
 
-	"github.com/gruntwork-io/terragrunt/config"
-	"github.com/gruntwork-io/terragrunt/errors"
-	"github.com/gruntwork-io/terragrunt/options"
-	"github.com/gruntwork-io/terragrunt/shell"
-	"github.com/gruntwork-io/terragrunt/util"
+	"github.com/tnn-gruntwork-io/terragrunt/config"
+	"github.com/tnn-gruntwork-io/terragrunt/errors"
+	"github.com/tnn-gruntwork-io/terragrunt/options"
+	"github.com/tnn-gruntwork-io/terragrunt/shell"
+	"github.com/tnn-gruntwork-io/terragrunt/util"
 	zglob "github.com/mattn/go-zglob"
 )
 
@@ -256,7 +256,7 @@ func flagModulesThatDontInclude(modules []*TerraformModule, terragruntOptions *o
 		module.FlagExcluded = true
 		for _, includeConfig := range module.Config.ProcessedIncludes {
 			// resolve include config to canonical path to compare with modulesThatIncludeCanonicalPath
-			// https://github.com/gruntwork-io/terragrunt/issues/1944
+			// https://github.com/tnn-gruntwork-io/terragrunt/issues/1944
 			canonicalPath, err := util.CanonicalPath(includeConfig.Path, module.Path)
 			if err != nil {
 				return nil, err
@@ -367,7 +367,7 @@ func resolveTerraformModule(terragruntConfigPath string, terragruntOptions *opti
 		opts.DownloadDir = downloadDir
 	}
 
-	// Fix for https://github.com/gruntwork-io/terragrunt/issues/208
+	// Fix for https://github.com/tnn-gruntwork-io/terragrunt/issues/208
 	matches, err := filepath.Glob(filepath.Join(filepath.Dir(terragruntConfigPath), "*.tf"))
 	if err != nil {
 		return nil, err

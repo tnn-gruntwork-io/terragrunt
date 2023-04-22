@@ -17,11 +17,11 @@ import (
 	"github.com/zclconf/go-cty/cty/function"
 	"go.mozilla.org/sops/v3/decrypt"
 
-	"github.com/gruntwork-io/terragrunt/aws_helper"
-	"github.com/gruntwork-io/terragrunt/errors"
-	"github.com/gruntwork-io/terragrunt/options"
-	"github.com/gruntwork-io/terragrunt/shell"
-	"github.com/gruntwork-io/terragrunt/util"
+	"github.com/tnn-gruntwork-io/terragrunt/aws_helper"
+	"github.com/tnn-gruntwork-io/terragrunt/errors"
+	"github.com/tnn-gruntwork-io/terragrunt/options"
+	"github.com/tnn-gruntwork-io/terragrunt/shell"
+	"github.com/tnn-gruntwork-io/terragrunt/util"
 )
 
 // List of terraform commands that accept -lock-timeout
@@ -143,7 +143,7 @@ func CreateTerragruntEvalContext(
 	}
 
 	// Map with HCL functions introduced in Terraform after v0.15.3, since upgrade to a later version is not supported
-	// https://github.com/gruntwork-io/terragrunt/blob/master/go.mod#L22
+	// https://github.com/tnn-gruntwork-io/terragrunt/blob/master/go.mod#L22
 	terraformCompatibilityFunctions := map[string]function.Function{
 		"startswith": wrapStringSliceToBoolAsFuncImpl(startsWith, extensions.TrackInclude, terragruntOptions),
 		"endswith":   wrapStringSliceToBoolAsFuncImpl(endsWith, extensions.TrackInclude, terragruntOptions),
@@ -282,7 +282,7 @@ func parseGetEnvParameters(parameters []string) (EnvVar, error) {
 }
 
 // runCommandCache - cache of evaluated `run_cmd` invocations
-// see: https://github.com/gruntwork-io/terragrunt/issues/1427
+// see: https://github.com/tnn-gruntwork-io/terragrunt/issues/1427
 var runCommandCache = NewStringCache()
 
 // runCommand is a helper function that runs a command and returns the stdout as the interporation
@@ -312,7 +312,7 @@ func runCommand(args []string, trackInclude *TrackInclude, terragruntOptions *op
 	}
 
 	// To avoid re-run of the same run_cmd command, is used in memory cache for command results, with caching key path + arguments
-	// see: https://github.com/gruntwork-io/terragrunt/issues/1427
+	// see: https://github.com/tnn-gruntwork-io/terragrunt/issues/1427
 	cacheKey := fmt.Sprintf("%v-%v", cachePath, args)
 	cachedValue, foundInCache := runCommandCache.Get(cacheKey)
 	if foundInCache {
@@ -338,7 +338,7 @@ func runCommand(args []string, trackInclude *TrackInclude, terragruntOptions *op
 	}
 
 	// Persisting result in cache to avoid future re-evaluation
-	// see: https://github.com/gruntwork-io/terragrunt/issues/1427
+	// see: https://github.com/tnn-gruntwork-io/terragrunt/issues/1427
 	runCommandCache.Put(cacheKey, value)
 	return value, nil
 }

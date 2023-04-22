@@ -3,8 +3,8 @@ package config
 import (
 	"path/filepath"
 
-	"github.com/gruntwork-io/terragrunt/errors"
-	"github.com/gruntwork-io/terragrunt/options"
+	"github.com/tnn-gruntwork-io/terragrunt/errors"
+	"github.com/tnn-gruntwork-io/terragrunt/options"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/gohcl"
 	"github.com/hashicorp/hcl/v2/hclparse"

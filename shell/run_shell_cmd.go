@@ -11,9 +11,9 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/gruntwork-io/terragrunt/errors"
-	"github.com/gruntwork-io/terragrunt/options"
-	"github.com/gruntwork-io/terragrunt/util"
+	"github.com/tnn-gruntwork-io/terragrunt/errors"
+	"github.com/tnn-gruntwork-io/terragrunt/options"
+	"github.com/tnn-gruntwork-io/terragrunt/util"
 	"github.com/hashicorp/go-multierror"
 	"github.com/sirupsen/logrus"
 )

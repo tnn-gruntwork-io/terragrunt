@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/gruntwork-io/terragrunt/config"
-	"github.com/gruntwork-io/terragrunt/options"
+	"github.com/tnn-gruntwork-io/terragrunt/config"
+	"github.com/tnn-gruntwork-io/terragrunt/options"
 	"github.com/stretchr/testify/assert"
 )
 

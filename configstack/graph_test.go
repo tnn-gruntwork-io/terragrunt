@@ -3,7 +3,7 @@ package configstack
 import (
 	"testing"
 
-	"github.com/gruntwork-io/terragrunt/errors"
+	"github.com/tnn-gruntwork-io/terragrunt/errors"
 	"github.com/stretchr/testify/assert"
 )
 

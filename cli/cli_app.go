@@ -10,23 +10,23 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gruntwork-io/terragrunt/tflint"
+	"github.com/tnn-gruntwork-io/terragrunt/tflint"
 
 	"github.com/hashicorp/go-multierror"
 	"github.com/mattn/go-zglob"
 	"github.com/sirupsen/logrus"
 	"github.com/urfave/cli"
 
-	"github.com/gruntwork-io/terragrunt/aws_helper"
-	"github.com/gruntwork-io/terragrunt/cli/tfsource"
-	"github.com/gruntwork-io/terragrunt/codegen"
-	"github.com/gruntwork-io/terragrunt/config"
-	"github.com/gruntwork-io/terragrunt/configstack"
-	"github.com/gruntwork-io/terragrunt/errors"
-	"github.com/gruntwork-io/terragrunt/options"
-	"github.com/gruntwork-io/terragrunt/remote"
-	"github.com/gruntwork-io/terragrunt/shell"
-	"github.com/gruntwork-io/terragrunt/util"
+	"github.com/tnn-gruntwork-io/terragrunt/aws_helper"
+	"github.com/tnn-gruntwork-io/terragrunt/cli/tfsource"
+	"github.com/tnn-gruntwork-io/terragrunt/codegen"
+	"github.com/tnn-gruntwork-io/terragrunt/config"
+	"github.com/tnn-gruntwork-io/terragrunt/configstack"
+	"github.com/tnn-gruntwork-io/terragrunt/errors"
+	"github.com/tnn-gruntwork-io/terragrunt/options"
+	"github.com/tnn-gruntwork-io/terragrunt/remote"
+	"github.com/tnn-gruntwork-io/terragrunt/shell"
+	"github.com/tnn-gruntwork-io/terragrunt/util"
 )
 
 const (
@@ -323,7 +323,7 @@ func CreateTerragruntCli(version string, writer io.Writer, errwriter io.Writer) 
 	app.Writer = writer
 	app.ErrWriter = errwriter
 	app.UsageText = `Terragrunt is a thin wrapper for Terraform that provides extra tools for working with multiple
-   Terraform modules, remote state, and locking. For documentation, see https://github.com/gruntwork-io/terragrunt/.`
+   Terraform modules, remote state, and locking. For documentation, see https://github.com/tnn-gruntwork-io/terragrunt/.`
 
 	return app
 }
@@ -676,7 +676,7 @@ func processErrorHooks(hooks []config.ErrorHook, terragruntOptions *options.Terr
 			for _, e := range err {
 				errorMessage := e.Error()
 				// Check if is process execution error and try to extract output
-				// https://github.com/gruntwork-io/terragrunt/issues/2045
+				// https://github.com/tnn-gruntwork-io/terragrunt/issues/2045
 				originalError := errors.Unwrap(e)
 				if originalError != nil {
 					processError, cast := originalError.(shell.ProcessExecutionError)
@@ -745,7 +745,7 @@ func shouldRunHook(hook config.Hook, terragruntOptions *options.TerragruntOption
 	//then execute.
 	//Skip execution if there was an error AND we care about errors
 
-	//resolves: https://github.com/gruntwork-io/terragrunt/issues/459
+	//resolves: https://github.com/tnn-gruntwork-io/terragrunt/issues/459
 	hasErrors := previousExecErrors.ErrorOrNil() != nil
 	isCommandInHook := util.ListContainsElement(hook.Commands, terragruntOptions.TerraformCommand)
 

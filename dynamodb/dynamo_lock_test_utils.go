@@ -6,9 +6,9 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
-	"github.com/gruntwork-io/terragrunt/aws_helper"
-	"github.com/gruntwork-io/terragrunt/options"
-	"github.com/gruntwork-io/terragrunt/util"
+	"github.com/tnn-gruntwork-io/terragrunt/aws_helper"
+	"github.com/tnn-gruntwork-io/terragrunt/options"
+	"github.com/tnn-gruntwork-io/terragrunt/util"
 	"github.com/stretchr/testify/assert"
 )
 

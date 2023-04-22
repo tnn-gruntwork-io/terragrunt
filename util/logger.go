@@ -19,7 +19,7 @@ const logLevelEnvVar = "TERRAGRUNT_LOG_LEVEL"
 // parsed command line arguments).
 //
 // This might go away once we migrate toproper cli library
-// (see https://github.com/gruntwork-io/terragrunt/blob/master/cli/args.go#L29)
+// (see https://github.com/tnn-gruntwork-io/terragrunt/blob/master/cli/args.go#L29)
 var GlobalFallbackLogEntry *logrus.Entry
 
 func init() {

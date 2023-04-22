@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/gruntwork-io/terragrunt/options"
+	"github.com/tnn-gruntwork-io/terragrunt/options"
 )
 
 // StringCache - structure to store cached values

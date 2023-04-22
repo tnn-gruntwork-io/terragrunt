@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/zclconf/go-cty/cty/gocty"
 
-	"github.com/gruntwork-io/terragrunt/errors"
+	"github.com/tnn-gruntwork-io/terragrunt/errors"
 )
 
 func TestEvaluateLocalsBlock(t *testing.T) {

@@ -11,9 +11,9 @@ import (
 	"github.com/imdario/mergo"
 	"github.com/zclconf/go-cty/cty"
 
-	"github.com/gruntwork-io/terragrunt/errors"
-	"github.com/gruntwork-io/terragrunt/options"
-	"github.com/gruntwork-io/terragrunt/util"
+	"github.com/tnn-gruntwork-io/terragrunt/errors"
+	"github.com/tnn-gruntwork-io/terragrunt/options"
+	"github.com/tnn-gruntwork-io/terragrunt/util"
 )
 
 const bareIncludeKey = ""
@@ -102,7 +102,7 @@ func handleInclude(
 	dependencyOutputs *cty.Value,
 ) (*TerragruntConfig, error) {
 	if trackInclude == nil {
-		return nil, fmt.Errorf("You reached an impossible condition. This is most likely a bug in terragrunt. Please open an issue at github.com/gruntwork-io/terragrunt with this error message. Code: HANDLE_INCLUDE_NIL_INCLUDE_CONFIG")
+		return nil, fmt.Errorf("You reached an impossible condition. This is most likely a bug in terragrunt. Please open an issue at github.com/tnn-gruntwork-io/terragrunt with this error message. Code: HANDLE_INCLUDE_NIL_INCLUDE_CONFIG")
 	}
 
 	// We merge in the include blocks in reverse order here. The expectation is that the bottom most elements override
@@ -135,7 +135,7 @@ func handleInclude(
 			}
 			baseConfig = parsedIncludeConfig
 		default:
-			return nil, fmt.Errorf("You reached an impossible condition. This is most likely a bug in terragrunt. Please open an issue at github.com/gruntwork-io/terragrunt with this error message. Code: UNKNOWN_MERGE_STRATEGY_%s", mergeStrategy)
+			return nil, fmt.Errorf("You reached an impossible condition. This is most likely a bug in terragrunt. Please open an issue at github.com/tnn-gruntwork-io/terragrunt with this error message. Code: UNKNOWN_MERGE_STRATEGY_%s", mergeStrategy)
 		}
 	}
 	return baseConfig, nil
@@ -150,7 +150,7 @@ func handleIncludePartial(
 	decodeList []PartialDecodeSectionType,
 ) (*TerragruntConfig, error) {
 	if trackInclude == nil {
-		return nil, fmt.Errorf("You reached an impossible condition. This is most likely a bug in terragrunt. Please open an issue at github.com/gruntwork-io/terragrunt with this error message. Code: HANDLE_INCLUDE_PARTIAL_NIL_INCLUDE_CONFIG")
+		return nil, fmt.Errorf("You reached an impossible condition. This is most likely a bug in terragrunt. Please open an issue at github.com/tnn-gruntwork-io/terragrunt with this error message. Code: HANDLE_INCLUDE_PARTIAL_NIL_INCLUDE_CONFIG")
 	}
 
 	// We merge in the include blocks in reverse order here. The expectation is that the bottom most elements override
@@ -183,7 +183,7 @@ func handleIncludePartial(
 			}
 			baseConfig = parsedIncludeConfig
 		default:
-			return nil, fmt.Errorf("You reached an impossible condition. This is most likely a bug in terragrunt. Please open an issue at github.com/gruntwork-io/terragrunt with this error message. Code: UNKNOWN_MERGE_STRATEGY_%s_PARTIAL", mergeStrategy)
+			return nil, fmt.Errorf("You reached an impossible condition. This is most likely a bug in terragrunt. Please open an issue at github.com/tnn-gruntwork-io/terragrunt with this error message. Code: UNKNOWN_MERGE_STRATEGY_%s_PARTIAL", mergeStrategy)
 		}
 	}
 	return baseConfig, nil
@@ -199,7 +199,7 @@ func handleIncludeForDependency(
 	terragruntOptions *options.TerragruntOptions,
 ) (*terragruntDependency, error) {
 	if trackInclude == nil {
-		return nil, fmt.Errorf("You reached an impossible condition. This is most likely a bug in terragrunt. Please open an issue at github.com/gruntwork-io/terragrunt with this error message. Code: HANDLE_INCLUDE_DEPENDENCY_NIL_INCLUDE_CONFIG")
+		return nil, fmt.Errorf("You reached an impossible condition. This is most likely a bug in terragrunt. Please open an issue at github.com/tnn-gruntwork-io/terragrunt with this error message. Code: HANDLE_INCLUDE_DEPENDENCY_NIL_INCLUDE_CONFIG")
 	}
 	// We merge in the include blocks in reverse order here. The expectation is that the bottom most elements override
 	// those in earlier includes, so we need to merge bottom up instead of top down to ensure this.
@@ -232,7 +232,7 @@ func handleIncludeForDependency(
 			}
 			baseDependencyBlock = mergedDependencyBlock
 		default:
-			return nil, fmt.Errorf("You reached an impossible condition. This is most likely a bug in terragrunt. Please open an issue at github.com/gruntwork-io/terragrunt with this error message. Code: UNKNOWN_MERGE_STRATEGY_%s_DEPENDENCY", mergeStrategy)
+			return nil, fmt.Errorf("You reached an impossible condition. This is most likely a bug in terragrunt. Please open an issue at github.com/tnn-gruntwork-io/terragrunt with this error message. Code: UNKNOWN_MERGE_STRATEGY_%s_DEPENDENCY", mergeStrategy)
 		}
 	}
 	return &terragruntDependency{Dependencies: baseDependencyBlock}, nil
@@ -396,7 +396,7 @@ func (targetConfig *TerragruntConfig) DeepMerge(sourceConfig *TerragruntConfig, 
 		resultModuleDependencies := &ModuleDependencies{}
 		if targetConfig.Dependencies != nil {
 			// take in result dependencies only paths which aren't defined in source
-			// Fix for issue: https://github.com/gruntwork-io/terragrunt/issues/1900
+			// Fix for issue: https://github.com/tnn-gruntwork-io/terragrunt/issues/1900
 			targetPathMap := fetchDependencyPaths(targetConfig)
 			sourcePathMap := fetchDependencyPaths(sourceConfig)
 			for key, value := range targetPathMap {

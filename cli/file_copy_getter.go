@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/gruntwork-io/terragrunt/util"
+	"github.com/tnn-gruntwork-io/terragrunt/util"
 	"github.com/hashicorp/go-getter"
 )
 

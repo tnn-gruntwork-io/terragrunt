@@ -71,7 +71,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - run: gruntwork-install --binary-name 'terratest_log_parser' --repo 'https://github.com/gruntwork-io/terratest' --tag 'v0.30.0'
+      - run: gruntwork-install --binary-name 'terratest_log_parser' --repo 'https://github.com/tnn-gruntwork-io/terratest' --tag 'v0.30.0'
       # Make GCP Service Account creds available as a file
       - run: echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
       - run: echo 'export GOOGLE_APPLICATION_CREDENTIALS=${HOME}/gcloud-service-key.json' >> $BASH_ENV
